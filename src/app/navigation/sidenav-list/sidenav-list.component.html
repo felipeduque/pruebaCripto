@@ -1,0 +1,31 @@
+<mat-nav-list>
+        <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+            <div fxFlex="20%">
+            <img mat-card-image class="img" src="../../../assets/img/logo-menu.jpeg">
+            </div>
+        </div>    
+    <a mat-list-item routerLink="/upload" (click)="onSidenavClose()">
+        <mat-icon>home</mat-icon> <span class="nav-caption">Registro</span>
+    </a>
+    <a mat-list-item routerLink="/owner" (click)="onSidenavClose()">
+        <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Opcion 1</span>   
+    </a>
+    <a mat-list-item routerLink="#" (click)="onSidenavClose()">
+        <mat-icon>account_balance</mat-icon><span class="nav-caption">Opcion 2</span>
+    </a>
+    <a mat-list-item routerLink="#" (click)="onSidenavClose()">
+        <mat-icon>account_box</mat-icon><span class="nav-caption">Opcion 3</span>
+    </a>
+    <a mat-list-item routerLink="#" (click)="onSidenavClose()">
+        <mat-icon>account_circle</mat-icon><span class="nav-caption">Opcion 4</span>
+    </a>
+    <mat-list-item [matMenuTriggerFor]="menu">
+        <mat-icon>unfold_more</mat-icon>
+        <a matline>Ejemplo</a>
+    </mat-list-item>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="onSidenavClose()">Rol 1</button>
+      <button mat-menu-item (click)="onSidenavClose()">Rol 2</button>
+      <button mat-menu-item (click)="onSidenavClose()">Rol 3</button>
+    </mat-menu>
+</mat-nav-list>

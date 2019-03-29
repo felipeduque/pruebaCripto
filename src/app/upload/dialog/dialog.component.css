@@ -1,0 +1,30 @@
+.add-files-btn {
+  float: right;
+}
+
+:host {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.actions {
+  justify-content: flex-end;
+}
+
+.container {
+  height: 100%;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field > * {
+  width: 100%;
+}
+.demo-full-width {
+  width: 100%;
+}
