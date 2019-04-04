@@ -10,7 +10,9 @@ import {
   , MatMenuModule
   , MatCardModule
   , MatFormFieldModule
-  , MatSelectModule
+  , MatSelectModule,
+  MatDialogModule,
+  MatProgressBarModule
  } from '@angular/material';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
@@ -18,6 +20,8 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
   declarations: [],
   imports: [
     CommonModule
+    , MatProgressBarModule
+    , MatDialogModule
     , MatTabsModule
     , MatSidenavModule
     , MatToolbarModule
@@ -32,6 +36,8 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
   ],
   exports: [
     MatTabsModule
+    , MatProgressBarModule
+    , MatDialogModule
     , MatSidenavModule
     , MatToolbarModule
     , MatButtonModule

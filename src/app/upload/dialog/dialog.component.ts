@@ -7,7 +7,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { forkJoin } from 'rxjs';
 import { formatDate } from '@angular/common';
 import { DialogData } from '../upload.component';
-
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-dialog',
@@ -29,33 +29,33 @@ export class DialogComponent implements OnInit{
   , @Inject(MAT_DIALOG_DATA)
     public data: DialogData  
   , public uploadService: UploadService
-
+  , private toast: ToastrService
   ) {
   this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530')
-}
-today= new Date();
-jstoday = '';
+  }
+  today= new Date();
+  jstoday = '';
 
 
-// async ngOnInit() {
-//   const version = await this.ipfs.version();
-//   console.log({version});
-// }
+  // async ngOnInit() {
+  //   const version = await this.ipfs.version();
+  //   console.log({version});
+  // }
 
-// public async set(path: string, value: string) {
-//   const content = Buffer.from(value);
-//   const filesAdded = await this.ipfs.files.add({path, content});
-//   this.hash = filesAdded[0].hash;
-// }
+  // public async set(path: string, value: string) {
+  //   const content = Buffer.from(value);
+  //   const filesAdded = await this.ipfs.files.add({path, content});
+  //   this.hash = filesAdded[0].hash;
+  // }
 
-// public async get(hash: string) {
-//   const fileBuffer = await this.ipfs.files.cat(hash);
-//   console.log(fileBuffer.toString());
-// }
+  // public async get(hash: string) {
+  //   const fileBuffer = await this.ipfs.files.cat(hash);
+  //   console.log(fileBuffer.toString());
+  // }
 
   progress: any;
   canBeClosed = true; 
-  primaryButtonText = 'Enviar';
+  primaryButtonText = 'Enviar Adjunto';
   showCancelButton = true; 
   uploading = false;
   uploadSuccessful = false;
@@ -74,6 +74,8 @@ jstoday = '';
     console.log('Entrò');
     
     this.uploadService.uploadFiles(this.files);
+    this.toast.info("Adjunto guardado con exito!", "Success!");
+
   }
   
   addFiles() {

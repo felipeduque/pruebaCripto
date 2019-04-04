@@ -1,14 +1,28 @@
 <div class="container">
-        <mat-form-field class="demo-full-width">
+
+        <div></div>
+        <div>
+                <button mat-raised-button color="primary" (click)="openUploadDialog()"><mat-icon>attachment</mat-icon>
+                        Subir Adjunto
+                </button> 
+        </div> 
+        <div>
+
+        </div>
+        <!-- <mat-form-field class="demo-full-width">
                 <mat-select placeholder=" Seleccion Origen de Transferencia" [(ngModel)]="name">    
                         <mat-option>-- Seleccionar --</mat-option>    
                         <mat-option value="Cuenta Activo 1">Cuenta de Activo 1</mat-option>
                         <mat-option value="Cuenta Activo 2">Cuenta de Activo 2</mat-option> 
                         <mat-option value="Cuenta Activo 3">Cuenta de Activo 3</mat-option>   
                                                                 
-                </mat-select>    
-        </mat-form-field> 
-                <mat-tab-group>
+                </mat-select> 
+        
+        
+
+        </mat-form-field>  -->
+
+                <!-- <mat-tab-group>
                         <mat-tab label="Componentes"> 
                                 <mat-list>
                                         <mat-list-item *ngFor="let item of items">
@@ -24,26 +38,42 @@
                                 </mat-list> 
                         </mat-tab>
                         <mat-tab label="Navegacion Tap">
-                                <mat-list>
-                                        <mat-list-item *ngFor="let item of items">
-                                        {{item.title}}
-                                        </mat-list-item>
-                                </mat-list> 
+
                         </mat-tab>
-                </mat-tab-group>
+                </mat-tab-group> -->
+                
                 <mat-list>
                         <mat-list-item *ngIf="dialogdata">
                         Activo Transferido a: {{dialogdata}}
                         </mat-list-item>
                 </mat-list> 
+                <mat-card>
+                        <div *ngIf="isLoaded" style="text-align: center;">
+                        <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
+                        <span>{{ page }} / {{ totalPages }}</span>
+                        <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+                        </div>
+                                              
+                        <pdf-viewer src="http://localhost:8080/downloadFile/02Natural.pdf"
+                                        [show-all]="false"
+                                        [page]="page"
+                                        (after-load-complete)="afterLoadComplete($event)"
+                        ></pdf-viewer>
+                
+                        <!-- <mat-list-item *ngFor="let item of items">
+                        {{item.title}}
+                        </mat-list-item> -->
+                        <!-- <div class="addButton-div">
+                                <button mat-fab color="primary" (click)="openUploadDialog()">
+                                Agregar
+                                </button>
+                        </div> -->
+                        
+                </mat-card> 
                 <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
                         <div *cdkVirtualFor="let item of items" class="example-item">{{item.title}}</div>
                 </cdk-virtual-scroll-viewport> -->
  
         
-        <div class="addButton-div">
-                <button mat-fab color="primary" (click)="openUploadDialog()">
-                Agregar
-                </button>
-        </div>
+
 </div>

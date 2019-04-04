@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component, OnInit, Input, ChangeDetectionStrategy, NgZone, ViewChild, } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
 import { UploadService } from './upload.service';
 import { Buffer } from 'buffer';
@@ -8,6 +8,10 @@ import {MatIconRegistry} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormBuilder, FormGroup, Validators ,FormsModule, NgForm, FormControl } from '@angular/forms'; 
+import { Observable, forkJoin } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { ToastrService } from 'ngx-toastr';
+
 
 export interface DialogData {
   dialogdata: string;
@@ -19,9 +23,16 @@ export interface DialogData {
   selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadComponent implements OnInit{
+  
+  public files: Set<File> = new Set();
+  // public addresses$: Observable<string[]>;
+  // public addresses: string[];
+  page: number = 1;
+  totalPages: number;
+  isLoaded: boolean = false;
 
   dialogdata: string;
   name: string;
@@ -29,7 +40,11 @@ export class UploadComponent implements OnInit{
   items : Item[];
   title : string = 'Titulo Lista'
   constructor(
-    iconRegistry: MatIconRegistry
+  // public dialogRef: MatDialogRef<DialogComponent>,
+  //  private toast: ToastrService,
+    // private store: Store<EthState>
+    // , private zone: NgZone
+     iconRegistry: MatIconRegistry
     , sanitizer: DomSanitizer
     , public dialog: MatDialog
     , public uploadService: UploadService) {
@@ -38,9 +53,25 @@ export class UploadComponent implements OnInit{
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/logo-tcs.svg'));
   }
 
-ngOnInit() {
+  afterLoadComplete(pdfData: any) {
+    this.totalPages = pdfData.numPages;
+    this.isLoaded = true;
+  }
+
+  nextPage() {
+    this.page++;
+  }
+
+  prevPage() {
+    this.page--;
+  }
+  ngOnInit() {
+  // this.store.dispatch( new GetAccounts() );
+  // this.addresses$ = this.store.pipe(select(((getAccounts))));
+
   this.items = this.getItems();
-}
+  }
+
 
   getItems() : Item[]{
     return [
@@ -118,13 +149,13 @@ ngOnInit() {
   public openUploadDialog(){
     const dialogRef = this.dialog.open(
       DialogComponent, 
-      { width: '80%'
-      , height: '80%'
-      , data: {name: this.name, dialogdata: this.dialogdata} 
+      { data: {name: this.name, dialogdata: this.dialogdata} 
+        , width: '80%'
+        , height: '80%'      
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
+        console.log('The dialog was closed' );
         this.dialogdata = result;
       });
   }

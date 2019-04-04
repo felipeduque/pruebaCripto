@@ -8,13 +8,18 @@
           <!--in here all the content must reside. We will add a navigation header as well-->
           <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
       <mat-card>
+          <div class="top">
           <mat-card-title>    
-                  Lista de Activos 
+                  Busquedas 
               </mat-card-title>
+              
+                <mat-search-bar></mat-search-bar>
+                
+              </div>
               <mat-card-content>
                   <main>
-                      <!-- <router-outlet></router-outlet> -->
-                      <app-upload></app-upload>
+                      <router-outlet></router-outlet>
+                      <!-- <app-upload></app-upload> -->
                   </main>                      
               </mat-card-content>
       </mat-card>

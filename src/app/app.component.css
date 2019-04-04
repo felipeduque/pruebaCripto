@@ -1,11 +1,47 @@
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
     height: 100%;
+    width: 100%;
+    padding: 0%;
+
 }
  
+.flex-wrapper {
+    max-width: 100%;
+}
 mat-sidenav {
     width: 250px;
 }
- 
+ mat-search-bar {
+    margin-left: auto;
+    background-color: rgb(0, 0, 0) !important;
+    margin-top: 25px;
+    margin-right: 10%;
+    margin-bottom: 15px;
+ }
+
+ .top{
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     justify-content: space-between;
+     background-color: rgba(230, 240, 248, 0.438) !important;
+     border-radius: 10% !important;
+ }
 main {
-    padding: 10px;
+    padding: 70px;
+}
+mat-card-title{
+padding: 20px;
+}
+@media(max-width: 480px){
+    .top{
+        display: block;
+        text-align: center;
+        
+    }
+}
+@media(max-width: 680px){
+    main{
+        padding: 10px !important;
+    }
 }

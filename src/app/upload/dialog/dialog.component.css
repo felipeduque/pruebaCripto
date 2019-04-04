@@ -28,3 +28,10 @@
 .demo-full-width {
   width: 100%;
 }
+.mat-raised-button.mat-primary {
+  background: #4387c4;
+  color: #fff;
+}
+.toast-info {
+  background-color: rgba(67, 136, 196, 0.404) !important;
+}

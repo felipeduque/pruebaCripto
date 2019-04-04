@@ -1,7 +1,11 @@
 .layout-wrapper{
     height: 100%;
 }
- 
+.mat-card {
+    width: 90%;
+    margin-left: 5% !important;
+  }
 .flex-wrapper{
     height: 100%;
+    max-width: 100% !important;
 }

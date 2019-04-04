@@ -29,11 +29,14 @@ import {
   MatProgressBarModule,
   MatSlideToggleModule,ErrorStateMatcher,ShowOnDirtyErrorStateMatcher  
 } from '@angular/material';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   imports: [CommonModule, MatButtonModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatDialogModule, MatListModule, FlexLayoutModule, HttpClientModule, BrowserAnimationsModule, MatProgressBarModule, FormsModule],
   declarations: [DialogComponent],
   exports: [
+    
     MatButtonModule,  
     MatMenuModule,  
     MatToolbarModule,  

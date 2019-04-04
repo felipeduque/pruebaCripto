@@ -1,25 +1,25 @@
 <form action="">
   <mat-dialog-content>
-      <h4 mat-dialog-title>Origen: {{data.name}}</h4>
+      <!-- <h4 mat-dialog-title>Origen: {{data.name}}</h4> -->
 
       <mat-form-field class="demo-full-width">    
           <!--  <input matInput [(ngModel)]="name" placeholder="Origen del activo"> --> 
-          <mat-select placeholder=" Seleccion Cuenta Inscrita" name="name" [(ngModel)]="data.dialogdata">    
+          <mat-select placeholder=" Seleccionar ID" name="name" [(ngModel)]="data.dialogdata">    
                   <mat-option>-- Seleccionar --</mat-option>    
-                  <mat-option value="Cuenta Destino 1">Cuenta Destino 1</mat-option>    
-                  <mat-option value="Cuenta Destino 2">Cuenta Destino 2</mat-option>
-                  <mat-option value="Cuenta Destino 3">Cuenta Destino 3</mat-option>                                    
+                  <mat-option value="id1">Identificacion 1</mat-option>    
+                  <mat-option value="id2">Identificacion 2</mat-option>
+                  <mat-option value="id3">Identificacion 3</mat-option>                                    
           </mat-select>    
       </mat-form-field> 
-          <p>{{today | date:'dd-MM-yyyy hh:mm:ss a':'+0530'}}</p>         
+          <!-- <p>{{today | date:'dd-MM-yyyy hh:mm:ss a':'+0530'}}</p>          -->
   </mat-dialog-content>
   <input type="file" #file style="display: none" (change)="onFilesAdded()" multiple />
 
   <div class="container" fxLayout="column" fxLayoutAlign="space-evenly stretch">
-    <h1 mat-dialog-title>Adjuntar Documentos</h1>
+    <h1 mat-dialog-title>Subir Documentos</h1>
     <div>
       <button [disabled]="uploading || uploadSuccessful" mat-raised-button color="primary" class="add-files-btn" (click)="addFiles()">
-        Agregar 
+        Adjuntar Documento 
       </button>
     </div>
 

@@ -13,10 +13,12 @@ a:hover, a:active{
     margin: 0;
 }
  
-mat-toolbar{
-    border-radius: 3px;
-}
- 
+mat-toolbar.mat-primary {
+    background: #4387c4;
+    color: #fff;
+    width: 100%;
+
+} 
 @media(max-width: 959px){
     mat-toolbar{
         border-radius: 0px;
